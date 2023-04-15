@@ -1,0 +1,532 @@
+warmup - generate
+============ generate ============
+prefill start -----
+------------------------layer name  InputEmbed
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  SelfAttention
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf torch.Size([32, 128, 128]), torch.Size([32, 128, 128])
+
+decoding stop
+------------------------layer name  MLP
+hidden  TorchTensor(shape=torch.Size([4, 32, 4096]), dtype=torch.float16, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+------------------------layer name  OutputEmbed
+hidden  TorchTensor(shape=torch.Size([4, 1]), dtype=torch.int64, device=cuda:0)
+cache_read_buf  None
+weight_read_buf  None
+attention_mask  TorchTensor(shape=torch.Size([4, 32]), dtype=torch.bool, device=cuda:0)
+cache_write_buf  None
+
+decoding stop
+prefill stop *******
