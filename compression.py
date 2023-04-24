@@ -300,7 +300,8 @@ def decompress(packed_data, config):
     """Simulate group-wise dequantization."""
     if not config.enabled:
         return packed_data
-
+    print('start decompress ')
+    time_de = time.time()
     group_size, num_bits, group_dim, symmetric = (
         config.group_size, config.num_bits, config.group_dim, config.symmetric)
 
@@ -322,8 +323,10 @@ def decompress(packed_data, config):
             original_shape[group_dim+1:])
         data = data.reshape(padded_original_shape)
         indices = [slice(0, x) for x in original_shape]
+        print('the decode spend ', time.time()-time_de)
         return data[indices].contiguous()
     else:
+        print('the decode spend ', time.time()-time_de)
         return data.view(original_shape)
 
 

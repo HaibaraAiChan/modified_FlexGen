@@ -431,6 +431,7 @@ class SelfAttention:
     def forward(self, hidden, cache_read_buf, weight_read_buf, attention_mask,
                 cache_write_buf, i, k):
         n_head = self.config.n_head
+        print('------------------************   number of head')
 
         donate = [False] * 14
         h, donate[0] = hidden.val, True
@@ -647,7 +648,10 @@ class OptLM:
         self.attention_mask = array_1d(num_gpu_batches, ValueHolder)
 
         self.task = None
+        print('init all weights ')
+        time_int = time.time()
         self.init_all_weights()
+        print('the time init all weights ',time.time()-time_int )
 
     def set_task(self, task):
         self.task = task
@@ -817,12 +821,12 @@ class OptLM:
         # print('attention_mask ', self.attention_mask[k].val)
         # print('cache_write_buf ', self.cache_write_buf[j][k].val)
         
-        if self.cache_write_buf[j][k].val :
-            print('cache_write_buf '+ str(self.cache_write_buf[j][k].val[0].data.size()) + ', ' + str(self.cache_write_buf[j][k].val[1].data.size()))
+        # if self.cache_write_buf[j][k].val :
+        #     print('cache_write_buf '+ str(self.cache_write_buf[j][k].val[0].data.size()) + ', ' + str(self.cache_write_buf[j][k].val[1].data.size()))
             
-        else:
-            print('cache_write_buf ', self.cache_write_buf[j][k].val)
-        print()
+        # else:
+        #     print('cache_write_buf ', self.cache_write_buf[j][k].val)
+        # print()
 
     def sync(self):
         self.env.disk.synchronize()
@@ -916,7 +920,7 @@ class OptLM:
         if debug_mode is None:
             if not overlap:
                 # No overlap, easy to understand, suitable for debugging
-                print('============ generate (only decode) ============')
+                print('============ generate loop normal ============')
                 self.generation_loop_normal()
             else:
                 # Overlap I/O and compute
@@ -1271,7 +1275,10 @@ def run_flexgen(args):
           f"hidden size (prefill): {hidden_size/GB:.3f} GB")
 
     print("init weight...")
+    print('start create model ')
+    time_m = time.time()
     model = OptLM(opt_config, env, args.path, policy)
+    print('the model construction time ', time.time()-time_m)
     print('   model structure ')
     for layer in model.layers:
         print(layer.name)
@@ -1290,12 +1297,15 @@ def run_flexgen(args):
         timers("generate").reset()
         print('args.gen_len ', args.gen_len)
         print('input ', torch.tensor(inputs).size())
+        time1 = time.time()
         output_ids = model.generate(
             inputs, max_new_tokens=args.gen_len,
             debug_mode=args.debug_mode, cut_gen_len=cut_gen_len, verbose=args.verbose)
         costs = timers("generate").costs
+        print('the model generate time ', time.time()-time1)
     finally:
         env.close_copy_threads()
+    
 
     # Log output
     prefill_latency = costs[0]
@@ -1368,11 +1378,15 @@ def add_parser_arguments(parser):
         const=True, default=True)
     parser.add_argument("--cpu-cache-compute", action="store_true")
     parser.add_argument("--attn-sparsity", type=float, default=1.0)
-    parser.add_argument("--compress-weight", action="store_true",
-        help="Whether to compress weight.")
-    parser.add_argument("--compress-cache", action="store_true",
-        help="Whether to compress cache.")
+    # parser.add_argument("--compress-weight", action="store_true",
+    #     help="Whether to compress weight.")
 
+    # parser.add_argument("--compress-cache", action="store_true",
+    #     help="Whether to compress cache.")
+    # parser.add_argument("--compress-weight", type=bool,default=True)
+    # parser.add_argument("--compress-cache", type=bool,default=True)
+    parser.add_argument("--compress-weight", type=bool,default=False)
+    parser.add_argument("--compress-cache", type=bool,default=False)
 
     parser.add_argument("--log-file", type=str, default="auto")
     parser.add_argument("--no-log", action="store_true")

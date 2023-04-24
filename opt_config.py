@@ -89,6 +89,11 @@ def get_opt_config(name, **kwargs):
             max_seq_len=2048, num_hidden_layers=32, n_head=32,
             hidden_size=4096, input_dim=4096, ffn_embed_dim=4096 * 4,
         )
+    elif arch_name == "opt-6.7b-muhd-64":
+        config = OptConfig(name=name,
+            max_seq_len=2048, num_hidden_layers=32, n_head=64,
+            hidden_size=4096, input_dim=4096, ffn_embed_dim=4096 * 4,
+        )
     elif arch_name == "opt-13b":
         config = OptConfig(name=name,
             max_seq_len=2048, num_hidden_layers=40, n_head=40,

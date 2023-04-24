@@ -14,6 +14,7 @@ import numpy as np
 from tqdm import tqdm
 import torch
 from transformers import AutoTokenizer
+from cpu_mem_usage import get_memory
 
 from flexgen.compression import CompressionConfig
 from flexgen.opt_config import OptConfig, get_opt_config, download_opt_weights
@@ -266,6 +267,7 @@ class OutputEmbed:
 class SelfAttention:
     def __init__(self, config, env, policy, layer_id):
         self.name = 'SelfAttention'
+        self.prefill = None
         self.config = config
         self.env = env
         self.layer_id = layer_id
@@ -430,6 +432,7 @@ class SelfAttention:
     def forward(self, hidden, cache_read_buf, weight_read_buf, attention_mask,
                 cache_write_buf, i, k):
         n_head = self.config.n_head
+        print('------------------************   number of head ', n_head)
 
         donate = [False] * 14
         h, donate[0] = hidden.val, True
@@ -445,12 +448,16 @@ class SelfAttention:
              (w_ln, _), (b_ln, _)) = weight_read_buf.val
 
         if i == 0:  # prefill
+            print('self attention prefill--------')
+            self.prefill = True
             mask, donate[1] = attention_mask.val.smart_copy(self.compute)
             h, new_k_cache, new_v_cache = self.compute.mha(h, mask, w_q, b_q,
                 w_k, b_k, w_v, b_v, w_out, b_out, w_ln, b_ln, n_head, donate,
                 self.policy.compress_cache, self.policy.comp_cache_config)
             cache_write_buf.store((new_k_cache, new_v_cache))
         else:  # decoding
+            print('self attention decode =======')
+            self.prefill = False
             mask, donate[1] = attention_mask.val.smart_copy(self.attention_compute)
             (k_cache, donate[12]), (v_cache, donate[13]) = cache_read_buf.pop()
             h, new_k_cache, new_v_cache = self.compute.mha_gen(h, mask, w_q,
@@ -726,12 +733,12 @@ class OptLM:
             self.layers[j].store_cache(self.cache_home[j][k], self.cache_write_buf[j][k], i)
             # 
             act_info = self.layers[j].input_act_shape_and_dtype(self.policy.gpu_batch_size, self.execute_gen_len)
-            print("input act shape and dtype ")
+            # print("input act shape and dtype ")
             
-            print(self.layers[j].name)
+            # print(self.layers[j].name)
             
-            print(act_info)
-            print()
+            # print(act_info)
+            # print()
             
     def delete_cache(self, j, k):
         v = self.cache_home[j][k].pop()
@@ -1132,7 +1139,10 @@ class OptLM:
 
         # Generate
         for i in range(self.execute_gen_len):
-            if i == 0: timers("prefill").start()
+
+            if i == 0:
+                print('prefill start -----')
+                timers("prefill").start()
             for k in range(self.num_gpu_batches):
                 self.update_attention_mask(i, k)
             for j in range(self.num_layers):
@@ -1233,19 +1243,33 @@ def run_flexgen(args):
           f"hidden size (prefill): {hidden_size/GB:.3f} GB")
 
     print("init weight...")
+    print('start create model ')
+    time_m = time.time()
     model = OptLM(opt_config, env, args.path, policy)
+    print('the model construction time ', time.time()-time_m)
+    print('   model structure ')
+    for layer in model.layers:
+        print(layer.name)
+        if 'Attention' in layer.name:
+            print('prefill ', layer.prefill)
+    print()
 
     try:
-        print("warmup - generate")
-        output_ids = model.generate(
-            warmup_inputs, max_new_tokens=1, verbose=args.verbose)
+        # print("warmup - generate")
+        # output_ids = model.generate(
+        #     warmup_inputs, max_new_tokens=1, verbose=args.verbose)
 
+        print('the useful data start from here -------------------------------------')
         print("benchmark - generate")
         timers("generate").reset()
+        print('args.gen_len ', args.gen_len)
+        print('input ', torch.tensor(inputs).size())
+        time1 = time.time()
         output_ids = model.generate(
             inputs, max_new_tokens=args.gen_len,
             debug_mode=args.debug_mode, cut_gen_len=cut_gen_len, verbose=args.verbose)
         costs = timers("generate").costs
+        print('the model generate time ', time.time()-time1)
     finally:
         env.close_copy_threads()
 

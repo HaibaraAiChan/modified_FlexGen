@@ -18998,3 +18998,103 @@ peak gpu mem: 13.450 GB	projected: False
 generate latency: 0.191 s	generate throughput: 5356.600 token/s
 decode latency: 1.020 s	decode throughput: 121.568 token/s
 total latency: 1.211 s	total throughput: 105.683 token/s
+
+   model structure 
+InputEmbed
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+SelfAttention
+prefill  None
+MLP
+OutputEmbed

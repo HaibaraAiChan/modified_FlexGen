@@ -23,4 +23,25 @@ python -m flexgen.flex_opt \
 --overlap False
 
 # python -m flexgen.flex_opt --model facebook/opt-6.7b --path _DUMMY_ --prompt-len 256 --gen-len 32 --percent 100 0 100 0 100 0 --gpu-batch-size 4 --overlap False
+python -m flexgen.flex_opt \
+--model facebook/opt-6.7b-muhd-64 \
+--path _DUMMY_ --prompt-len 256 \
+--gen-len 32 \
+--percent 100 0 100 0 100 0 \
+--gpu-batch-size 4 \
+--overlap False
+
+python -m flexgen.flex_opt --model facebook/opt-6.7b-muhd-64 --path _DUMMY_ --prompt-len 256 --gen-len 32 --percent 100 0 100 0 100 0 --gpu-batch-size 4 --overlap False
+
+
+python -m flexgen.flex_opt --model facebook/opt-6.7b --path _DUMMY_ --prompt-len 256 --gen-len 32 --percent 100 0 100 0 100 0 --gpu-batch-size 4 --overlap False
+
+# int4 compression
+python -m flexgen.flex_opt --model facebook/opt-6.7b --path _DUMMY_ --prompt-len 256 --gen-len 32 --percent 100 0 100 0 100 0 --gpu-batch-size 4 --overlap False --compress-weight --compress-cache
+python -m flexgen.flex_opt --model facebook/opt-6.7b --path _DUMMY_ --prompt-len 256 --gen-len 32 --percent 100 0 100 0 100 0 --gpu-batch-size 128 --overlap False --compress-weight --compress-cache
+
+python -m flexgen.flex_opt --model facebook/opt-6.7b --path _DUMMY_ --percent 100 0 100 0 100 0 --gpu-batch-size 72 --overlap False --compress-weight --compress-cache
+
+python -m flexgen.flex_opt --model facebook/opt-6.7b --path _DUMMY_ --percent 100 0 100 0 100 0 --gpu-batch-size 28 --overlap False --compress-weight --compress-cache --prompt-len 1024
+
 

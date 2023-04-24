@@ -12,6 +12,8 @@ from typing import Optional, Union, Tuple
 import torch
 import torch.nn.functional as F
 import numpy as np
+from memory_usage import see_memory_usage
+from cpu_mem_usage import get_memory
 
 from flexgen.utils import (GB, T, cpu_mem_stats, vector_gather,
     np_dtype_to_torch_dtype, torch_dtype_to_np_dtype,
@@ -311,7 +313,8 @@ class TorchDevice:
         scaling = head_dim ** -0.5
 
         hidden = F.layer_norm(inputs.data, (h,), weight=w_ln.data, bias=b_ln.data)
-
+        see_memory_usage('---------================-------------------before q, k, v \n')
+        get_memory('---------================-------------------before q, k, v \n')
         # shape: (b, s, h)
         q = F.linear(hidden, w_q.data, bias=b_q.data) * scaling
         k = F.linear(hidden, w_k.data, bias=b_k.data)
@@ -362,7 +365,8 @@ class TorchDevice:
         else:
             k = TorchTensor.create_from_torch(k, self)
             v = TorchTensor.create_from_torch(v, self)
-
+        see_memory_usage('---------================-------------------after mha \n')
+        get_memory('---------================-------------------after mha \n')
         return TorchTensor.create_from_torch(value, self), k, v
 
     def mha_gen(self, inputs, attention_mask, w_q, b_q, w_k, b_k, w_v, b_v,
@@ -452,7 +456,7 @@ class TorchDevice:
         value = value.transpose(1, 2).view(b, tgt_s, h)
         value = F.linear(value, w_out.data, bias=b_out.data)
 
-        value.add_(inputs.data)
+        value.add_(inputs.data) # Add & Norm
 
         if donate[0]: inputs.delete()
         if donate[1]: attention_mask.delete()
@@ -467,7 +471,8 @@ class TorchDevice:
         else:
             k_new = TorchTensor.create_from_torch(k_new, self)
             v_new = TorchTensor.create_from_torch(v_new, self)
-
+        see_memory_usage('---------================-------------------after mha_gen \n')
+        get_memory('---------================-------------------after mha_gen \n')
         return TorchTensor.create_from_torch(value, self), k_new, v_new
 
     def _attention_weights(self, q, k, mask, b, src_s, n_head):
@@ -581,7 +586,7 @@ class TorchDevice:
         F.relu(out, inplace=True)
         out = F.linear(out, wo.data, bias=bo.data)
 
-        out.add_(inputs.data)
+        out.add_(inputs.data) # Add & Norm
         if donate[0]: inputs.delete()
         return TorchTensor.create_from_torch(out, self)
 
