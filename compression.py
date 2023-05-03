@@ -2,6 +2,7 @@ import dataclasses
 
 import torch
 import numpy as np
+import pdb
 
 from flexgen.pytorch_backend import (TorchTensor, TorchDevice,
     DeviceType, general_copy, fix_recursive_import)
@@ -90,7 +91,7 @@ class TorchCompressedDevice:
             comp_config.group_size, comp_config.num_bits,
             comp_config.group_dim, comp_config.symmetric)
         assert num_bits == 4 and group_size % 2 == 0 and not symmetric
-
+        print('compression online ---------=======--------========')
         if tensor.device.type == "cpu" and tensor.dtype == torch.float16:
             tensor = tensor.float()
 
@@ -301,6 +302,7 @@ def decompress(packed_data, config):
     if not config.enabled:
         return packed_data
     print('start decompress ')
+    pdb.set_trace()
     time_de = time.time()
     group_size, num_bits, group_dim, symmetric = (
         config.group_size, config.num_bits, config.group_dim, config.symmetric)

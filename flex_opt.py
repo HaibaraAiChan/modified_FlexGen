@@ -14,7 +14,7 @@ import numpy as np
 from tqdm import tqdm
 import torch
 from transformers import AutoTokenizer
-from cpu_mem_usage import get_memory
+# from cpu_mem_usage import get_memory
 
 from flexgen.compression import CompressionConfig
 from flexgen.opt_config import OptConfig, get_opt_config, download_opt_weights
@@ -91,6 +91,7 @@ def get_choice(cur_percent, percents, choices):
 
 
 def init_weight_list(weight_specs, policy, env):
+    print("init_weight_list =-=-=-=-=-=-=-=-=")
     dev_percents = [policy.w_disk_percent, policy.w_cpu_percent, policy.w_gpu_percent]
     dev_choices = [env.disk, env.cpu, env.gpu]
 
@@ -108,24 +109,34 @@ def init_weight_list(weight_specs, policy, env):
         else:
             pin_memory = policy.pin_weight
             compress = policy.compress_weight
+            print('allocate weight policy.compress_weight ', compress)
 
         if not compress:
             weight = home.allocate(shape, dtype, pin_memory=pin_memory)
-
+            print('allocate weight ', weight.shape)
             if DUMMY_WEIGHT not in filename:
                 weight.load_from_np_file(weight_specs[i][2])
             else:
                 weight.load_from_np(np.ones(shape, dtype))
                 #weight.load_from_np(np.random.rand(*shape).astype(dtype))
-        else:
+        else: # compress
+            print('init weight list compress home.compressed_device.allocate ')
             weight = home.compressed_device.allocate(
                 shape, dtype, policy.comp_weight_config, pin_memory=pin_memory)
-
+            print('weight ', weight)
+            non_zero_count = torch.nonzero(weight.data[0].data).size(0)
+            print("Number of non-zero elements:", non_zero_count)
+            
             if DUMMY_WEIGHT not in filename:
                 weight.load_from_np_file(weight_specs[i][2])
+                print('weight.load_from_np_file')
             else:
+                print('DUMMY_WEIGHT  in filenam')
                 for i in range(2):
                     x = weight.data[i]
+                    tmp = np.ones(x.shape, torch_dtype_to_np_dtype[x.dtype])
+                    print(tmp)
+                    print(len(tmp))
                     x.load_from_np(np.ones(x.shape, torch_dtype_to_np_dtype[x.dtype]))
 
         ret.append(weight)
@@ -488,6 +499,7 @@ class MLP:
     def init_weight(self, weight_home, path):
         h, dtype = (self.config.input_dim, self.config.dtype)
         path = os.path.join(os.path.join(path, f"decoder.layers.{self.layer_id}."))
+        print('MLP weights ', path)
         weight_specs = [
             # wi
             ((4 * h, h), dtype, path + "fc1.weight"),
@@ -502,7 +514,11 @@ class MLP:
             # b_ln
             ((h,), dtype, path + "final_layer_norm.bias"),
         ]
+        # print('weight_specs ', weight_specs)
+        # print('self.policy ', self.policy)
+        # print('self.env ', self.env)
         weights = init_weight_list(weight_specs, self.policy, self.env)
+        
         weight_home.store(weights)
 
     def load_weight(self, weight_home, weight_read_buf, k):
@@ -559,6 +575,7 @@ class TransformerLayer:
     def init_weight(self, weight_home, path):
         home1, home2 = ValueHolder(), ValueHolder()
         self.attention.init_weight(home1, path)
+        
         self.mlp.init_weight(home2, path)
         weight_home.store((home1, home2))
 
@@ -648,6 +665,7 @@ class OptLM:
 
         self.task = None
         self.init_all_weights()
+        print('init all weights----------')
 
     def set_task(self, task):
         self.task = task
@@ -657,8 +675,12 @@ class OptLM:
     def init_weight(self, j):
         expanded_path = os.path.abspath(os.path.expanduser(
             os.path.join(self.path, f"{self.config.name}-np")))
+        print('expanded_path, ', expanded_path )
         check_path = os.path.join(expanded_path, "decoder.embed_positions.weight")
+        print('check_path ', check_path)
+        print('OPTLM init weight')
         if not os.path.exists(check_path) and DUMMY_WEIGHT not in check_path:
+            print(' download opt weights')
             download_opt_weights(self.config.name, self.path)
 
         self.layers[j].init_weight(self.weight_home[j], expanded_path)
@@ -1247,13 +1269,13 @@ def run_flexgen(args):
     time_m = time.time()
     model = OptLM(opt_config, env, args.path, policy)
     print('the model construction time ', time.time()-time_m)
-    print('   model structure ')
-    for layer in model.layers:
-        print(layer.name)
-        if 'Attention' in layer.name:
-            print('prefill ', layer.prefill)
-    print()
-
+    # print('   model structure ')
+    # for layer in model.layers:
+    #     print(layer.name)
+    #     if 'Attention' in layer.name:
+    #         print('prefill ', layer.prefill)
+    # print()
+    return
     try:
         # print("warmup - generate")
         # output_ids = model.generate(
@@ -1344,11 +1366,12 @@ def add_parser_arguments(parser):
         const=True, default=True)
     parser.add_argument("--cpu-cache-compute", action="store_true")
     parser.add_argument("--attn-sparsity", type=float, default=1.0)
-    parser.add_argument("--compress-weight", action="store_true",
-        help="Whether to compress weight.")
-    parser.add_argument("--compress-cache", action="store_true",
-        help="Whether to compress cache.")
-
+    # parser.add_argument("--compress-weight", action="store_true",
+    #     help="Whether to compress weight.")
+    # parser.add_argument("--compress-cache", action="store_true",
+    #     help="Whether to compress cache.")
+    parser.add_argument("--compress-weight", type=bool,default=True)
+    parser.add_argument("--compress-cache", type=bool,default=True)
 
     parser.add_argument("--log-file", type=str, default="auto")
     parser.add_argument("--no-log", action="store_true")
